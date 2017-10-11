@@ -1,13 +1,14 @@
-package com.spring.dao;
+package com.spring.daoimpl;
 
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.model.Users;
+import com.spring.dao.UserDAO;
+import com.spring.model.User;
 
 
-@Repository
+@Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
 
 	
@@ -20,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
 		
 	}
 
-	public boolean saveUser(Users user) {
+	public boolean saveUser(User user) {
 		
 		Session session=sessionFactory.openSession();
 		session.saveOrUpdate(user);
