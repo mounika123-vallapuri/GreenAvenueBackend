@@ -6,11 +6,16 @@ import javax.persistence.*;
 @Table(name="Supplier")
 public class Supplier 
 {
+	
+
 	@Id
 	int SupId;
 	
-	String SupName,SupDesc;
+	String SupName,SupDesc, SupAddress;
 
+
+
+	
 	public int getSupId() {
 		return SupId;
 	}
@@ -34,6 +39,18 @@ public class Supplier
 	public void setSupDesc(String SupDesc) {
 		this.SupDesc = SupDesc;
 	}
+
+	public String getSupAddress()
+	{
+		return SupAddress;
+	}
+	
+	public void setSupAddress(String SupAddress) {
+		this.SupAddress=SupAddress;
+		
+	}
+
+	
 	
 	
 }

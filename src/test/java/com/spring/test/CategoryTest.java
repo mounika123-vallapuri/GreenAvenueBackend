@@ -11,7 +11,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.spring.dao.CategoryDAO;
 import com.spring.model.Category;
-@Ignore
+
+
+
+
 public class CategoryTest 
 {
 	static CategoryDAO categoryDAO;
@@ -53,6 +56,7 @@ public class CategoryTest
 		assertTrue(categoryDAO.updateCategory(category));
 	}
 	
+	@Ignore
 	@Test
 	public void deleteCategoryTest()
 	{
@@ -79,11 +83,11 @@ public class CategoryTest
 		}
 	}
 	
-	@Ignore
+
 	@Test
 	public void getCategoryTest()
 	{
-		Category category=categoryDAO.getCategory(101);
+		Category category=categoryDAO.getCategory(102);
 		assertNotNull("Problem in Getting:",category);
 		System.out.println("Category ID:"+category.getCatId());
 		System.out.println("Category Name:"+category.getCatName());

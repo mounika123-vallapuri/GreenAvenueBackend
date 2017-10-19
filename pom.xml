@@ -1,23 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com</groupId>
-  <artifactId>GreenAvenueBackend</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-<packaging>jar</packaging>
-  <name>GreenAvenueBackend</name>
-  <url>http://maven.apache.org</url>
+	<groupId>com</groupId>
+	<artifactId>GreenAvenueBackend</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>GreenAvenueBackend</name>
+	<url>http://maven.apache.org</url>
 
- <properties>
+	<properties>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 	</properties>
-	
-
-  <dependencies>
+	<dependencies>
 
 
-    <!-- https://mvnrepository.com/artifact/junit/junit -->
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -29,7 +27,7 @@
 			<version>1.1.2</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-		
+
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
@@ -75,18 +73,28 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.10.Final</version>
 		</dependency>
+
 		<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-entitymanager</artifactId>
-    <version>4.0.0.Final</version>
-</dependency>
-
-		
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.196</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
-	
 
+<dependency>
 
-    	<!-- Logging -->
+<groupId>commons-io</groupId>
+<artifactId>commons-io</artifactId>
+<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -104,24 +112,24 @@
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
-	
-		
+
+
 		<dependency>
-  <groupId>junit</groupId>
-  <artifactId>junit</artifactId>
-  <version>4.12</version>
-  <scope>test</scope>
-</dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 
-<dependency>
-  <groupId>org.hamcrest</groupId>
-  <artifactId>hamcrest-library</artifactId>
-  <version>1.3</version>
-  <scope>test</scope>
-</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
 
-  </dependencies>
-  <build>
-    <finalName>GreenAvenueBackend</finalName>
-  </build>
+	</dependencies>
+	<build>
+		<finalName>GreenAvenueBackend</finalName>
+	</build>
 </project>

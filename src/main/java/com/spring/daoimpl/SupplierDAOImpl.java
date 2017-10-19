@@ -13,11 +13,15 @@ import com.spring.dao.SupplierDAO;
 import com.spring.model.Supplier;
 
 @SuppressWarnings("deprecation")
-@Repository("SupplierDAO")
+@Repository("supplierDAO")
 public class SupplierDAOImpl implements SupplierDAO
 {
 	@Autowired
 	SessionFactory sessionFactory;
+
+	public SupplierDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory=sessionFactory;
+	}
 
 	@Transactional
 	public boolean addSupplier(Supplier supplier) 

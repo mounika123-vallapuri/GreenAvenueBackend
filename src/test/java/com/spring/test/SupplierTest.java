@@ -14,7 +14,7 @@ import com.spring.model.Supplier;
 @Ignore
 public class SupplierTest 
 {
-	static SupplierDAO SupplierDAO;
+	static SupplierDAO supplierDAO;
 	
 	@BeforeClass
 	public static void initialize()
@@ -26,7 +26,7 @@ public class SupplierTest
 		
 		//SessionFactory sessionFactory=(SessionFactory)configApplnContext.getBean("DBConfig.class");
 		
-		SupplierDAO=(SupplierDAO)configApplnContext.getBean("SupplierDAO");
+		supplierDAO=(SupplierDAO)configApplnContext.getBean("supplierDAO");
 	}
 	@Ignore
 	@Test
@@ -37,7 +37,7 @@ public class SupplierTest
 		supplier.setSupName("Desktop");
 		supplier.setSupDesc("all kinds of desktops ");
 		
-		assertTrue(SupplierDAO.addSupplier(supplier));
+		assertTrue(supplierDAO.addSupplier(supplier));
 	}
 	@Test
 	public void updateSupplierTest()
@@ -47,7 +47,7 @@ public class SupplierTest
 		Supplier.setSupName("JMShirt");
 		Supplier.setSupDesc("John Miller Shirt with Best Price");
 		
-		assertTrue(SupplierDAO.updateSupplier(Supplier));
+		assertTrue(supplierDAO.updateSupplier(Supplier));
 	}
 	@Ignore
 	@Test
@@ -55,13 +55,13 @@ public class SupplierTest
 	{
 		Supplier Supplier=new Supplier();
 		Supplier.setSupId(1002);
-		assertTrue(SupplierDAO.deleteSupplier(Supplier));
+		assertTrue(supplierDAO.deleteSupplier(Supplier));
 	}
 	@Ignore
 	@Test
 	public void retrieveSupplierTest()
 	{
-		List<Supplier> listSupplier=SupplierDAO.retrieveSupplier();
+		List<Supplier> listSupplier=supplierDAO.retrieveSupplier();
 		assertNotNull("Problem in Retriving ",listSupplier);
 		this.show(listSupplier);
 	}
@@ -79,7 +79,7 @@ public class SupplierTest
 	@Test
 	public void getSupplierTest()
 	{
-		Supplier Supplier=SupplierDAO.getSupplier(1001);
+		Supplier Supplier=supplierDAO.getSupplier(1001);
 		assertNotNull("Problem in Getting:",Supplier);
 		System.out.println("Supplier ID:"+Supplier.getSupId());
 		System.out.println("Supplier Name:"+Supplier.getSupName());

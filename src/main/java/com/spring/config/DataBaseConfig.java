@@ -1,66 +1,100 @@
 package com.spring.config;
-
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.*;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.spring.model.Category;
-import com.spring.model.Product;
-import com.spring.model.Supplier;
+import com.spring.dao.CategoryDAO;
+import com.spring.dao.ProductDAO;
+import com.spring.dao.SupplierDAO;
+import com.spring.dao.UserDAO;
+import com.spring.daoimpl.CategoryDAOImpl;
+import com.spring.daoimpl.ProductDAOImpl;
+import com.spring.daoimpl.SupplierDAOImpl;
+import com.spring.daoimpl.UserDAOImpl;
 
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("com.spring")
 public class DataBaseConfig 
 {
-	
-	//Creating a DataSource Bean
-	public DataSource getH2DataSource()
-	{
-		DriverManagerDataSource driverMgrDataSource=new DriverManagerDataSource();
-		driverMgrDataSource.setDriverClassName("org.h2.Driver");
-		driverMgrDataSource.setUrl("jdbc:h2:tcp://localhost/~/DT133");
-		driverMgrDataSource.setUsername("sa");
-		driverMgrDataSource.setPassword("a");
-		return driverMgrDataSource;
+	 @Bean(name = "dataSource")
+		public DataSource getDataSource() {
+			DriverManagerDataSource dataSource = new DriverManagerDataSource();
+			dataSource.setDriverClassName("org.h2.Driver");
+			dataSource.setUrl("jdbc:h2:tcp://localhost/~/DT133");
+			dataSource.setUsername("sa");
+			dataSource.setPassword("a");
+			System.out.println("Datasource");
+			return dataSource;
+
+		}
+
+		private Properties getHibernateProperties() {
+			Properties properties = new Properties();
+			properties.put("hibernate.show_sql", "true");
+			properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		//	properties.put("hibernate.hbm2ddl.auto", "create");
+			properties.put("hibernate.hbm2ddl.auto", "update");
+			System.out.println("Hibernate Properties");
+			return properties;
+
+		}
+
+		@Autowired
+		@Bean(name = "sessionFactory")
+		public SessionFactory getSessionFactory(DataSource dataSource) {
+			LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
+			sessionBuilder.addProperties(getHibernateProperties());
+			sessionBuilder.scanPackages("com.spring");
+			System.out.println("Session");
+			
+			return sessionBuilder.buildSessionFactory();
+			
+		}
+
+		@Autowired
+		@Bean(name = "transactionManager")
+		public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+			HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
+			System.out.println("Transaction");
+			return transactionManager;
+		}
+	@Autowired
+	@Bean(name = "userDAO")
+	public UserDAO getUserDAO(SessionFactory sessionFactory) {
+	    return new UserDAOImpl(sessionFactory);
 	}
 	
-	//Session Factory Bean Created.
 	@Autowired
-	@Bean(name="sessionFactory")
-	public SessionFactory getSessionFactory()
+	@Bean(name = "productDAO")
+	public ProductDAO getProductDao(SessionFactory sessionFactory) {
+	    return new ProductDAOImpl(sessionFactory);
+	}
+	
+	
+	@Autowired
+	@Bean(name="categoryDAO")
+	public CategoryDAO getCategory(SessionFactory sessionFactory)
 	{
-		Properties hibernateProperties=new Properties();
-		hibernateProperties.setProperty("hibernate.hbm2ddl.auto","update");
-		hibernateProperties.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
+		return new CategoryDAOImpl(sessionFactory);
 		
-		LocalSessionFactoryBuilder localSessionFacBuilder=new LocalSessionFactoryBuilder(getH2DataSource());
-		localSessionFacBuilder.addProperties(hibernateProperties);
-		localSessionFacBuilder.addAnnotatedClass(Category.class);
-		localSessionFacBuilder.addAnnotatedClass(Supplier.class);
-		localSessionFacBuilder.addAnnotatedClass(Product.class);
-		SessionFactory sessionFactory=localSessionFacBuilder.buildSessionFactory();
-		System.out.println("Session Factory Object Created");
-		return sessionFactory;
 	}
 	
-	//Transaction Bean Object
 	@Autowired
-	@Bean
-	public HibernateTransactionManager getHibernateTransactionManager(SessionFactory sessionFactory)
+	@Bean(name="supplierDAO")
+	public SupplierDAO getSupplier(SessionFactory sessionFactory)
 	{
-		HibernateTransactionManager hibernateTranMgr=new HibernateTransactionManager(sessionFactory);
-		return hibernateTranMgr;
+		return new SupplierDAOImpl(sessionFactory);
+		
 	}
 	
+
+	
+	
+
 }

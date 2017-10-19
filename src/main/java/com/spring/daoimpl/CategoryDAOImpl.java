@@ -21,6 +21,11 @@ public class CategoryDAOImpl implements CategoryDAO
 	@Autowired
 	SessionFactory sessionFactory;
 
+	public CategoryDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory=sessionFactory;
+	
+	}
+
 	@Transactional
 	public boolean addCategory(Category category) 
 	{
