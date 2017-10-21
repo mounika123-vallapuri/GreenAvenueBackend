@@ -2,6 +2,8 @@ package com.spring.model;
 
 import javax.persistence.*;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table
 public class Product 
@@ -12,6 +14,17 @@ public class Product
 	String productName,productDesc;
 	int stock,price,catId,supplierId;
 	
+	@Transient
+	MultipartFile pimage;
+	
+	
+	
+	public MultipartFile getPimage() {
+		return pimage;
+	}
+	public void setPimage(MultipartFile pimage) {
+		this.pimage = pimage;
+	}
 	public int getProductId() {
 		return productId;
 	}
@@ -55,6 +68,11 @@ public class Product
 		this.supplierId = supplierId;
 	}
 	
+	@Override
+   	public String toString() {
+   		return "Product [productId=" + productId + ", productName=" + productName + ", productDesc=" + productDesc
+   				+ ", stock=" + stock + ", price=" + price + ", catId=" + catId + ", supplierId=" + supplierId
+   				+ ", pimage=" + pimage + "]";
 	
-	
+}
 }

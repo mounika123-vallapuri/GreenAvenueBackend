@@ -2,6 +2,8 @@ package com.spring.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import com.spring.dao.ProductDAO;
 import com.spring.model.Product;
 
 
+@SuppressWarnings("deprecation")
 @Repository("productDAO")
 public class ProductDAOImpl implements ProductDAO
 {
@@ -39,25 +42,53 @@ this.sessionFactory=sessionFactory;
 	}
 
 	public boolean deleteProduct(Product product) {
-		// TODO Auto-generated method stub
+		try
+		{
+		Session session=sessionFactory.getCurrentSession();
+		session.delete(product);
+		return true;
+		}
+		catch(Exception e)
+		{
+		System.out.println("Exception Arised:"+e);	
 		return false;
+		}
+
 	}
 	
 	
 	public List<Product> retrieveProducts() {
-		// TODO Auto-generated method stub
-		return null;
+
+		Session session=sessionFactory.openSession();
+		@SuppressWarnings({ "rawtypes" })
+		Query query=session.createQuery("from Supplier");
+		@SuppressWarnings({ "unchecked" })
+		List<Product> listProduct=query.list();
+		session.close();
+		return listProduct;
 	}
 
 	
 	public boolean updateProduct(Product product) {
-		// TODO Auto-generated method stub
+		try
+		{
+		sessionFactory.getCurrentSession().saveOrUpdate(product);
+		return true;
+		}
+		catch(Exception e)
+		{
+		System.out.println("Exception Arised:"+e);
 		return false;
+		}
 	}
 
 	public Product getProduct(int productId) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session=sessionFactory.openSession();
+		Product product=(Product)session.get(Product.class,productId);
+		session.close();
+		return product;
+	
+	
 	}
 	
 }

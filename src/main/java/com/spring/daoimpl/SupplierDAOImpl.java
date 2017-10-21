@@ -66,10 +66,10 @@ public class SupplierDAOImpl implements SupplierDAO
 		}
 	}
 
-	public Supplier getSupplier(int SupId) 
+	public Supplier getSupplier(int supId) 
 	{
 		Session session=sessionFactory.openSession();
-		Supplier Supplier=(Supplier)session.get(Supplier.class,SupId);
+		Supplier Supplier=(Supplier)session.get(Supplier.class,supId);
 		session.close();
 		return Supplier;
 	}

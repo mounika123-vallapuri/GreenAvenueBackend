@@ -8,10 +8,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
+import com.spring.config.DataBaseConfig;
 import com.spring.dao.SupplierDAO;
 import com.spring.model.Supplier;
 
-@Ignore
 public class SupplierTest 
 {
 	static SupplierDAO supplierDAO;
@@ -22,13 +22,14 @@ public class SupplierTest
 		@SuppressWarnings("resource")
 		AnnotationConfigWebApplicationContext configApplnContext=new AnnotationConfigWebApplicationContext();
 		configApplnContext.scan("com.spring");
+		configApplnContext.register(DataBaseConfig.class);
 		configApplnContext.refresh();
 		
 		//SessionFactory sessionFactory=(SessionFactory)configApplnContext.getBean("DBConfig.class");
 		
 		supplierDAO=(SupplierDAO)configApplnContext.getBean("supplierDAO");
 	}
-	@Ignore
+	
 	@Test
 	public void addSupplierTest()
 	{

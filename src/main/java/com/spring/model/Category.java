@@ -3,12 +3,11 @@ package com.spring.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+
 public class Category 
 {
 	@Id
 	int catId;
-	
 	String catName,catDesc;
 
 	public int getCatId() {
