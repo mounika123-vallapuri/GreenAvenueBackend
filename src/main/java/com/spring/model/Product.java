@@ -2,28 +2,31 @@ package com.spring.model;
 
 import javax.persistence.*;
 
-import org.springframework.web.multipart.MultipartFile;
-
 @Entity
 @Table
 public class Product 
 {
 	@Id
+	@GeneratedValue
 	int productId;
 	
+	
+	
+	
+	
 	String productName,productDesc;
-	int stock,price,catId,supplierId;
+	int stock,price,catId,supId;
 	
-	@Transient
-	MultipartFile pimage;
+	@Lob
+	private byte[] image;
 	
 	
 	
-	public MultipartFile getPimage() {
-		return pimage;
+	public byte[] getImage() {
+		return image;
 	}
-	public void setPimage(MultipartFile pimage) {
-		this.pimage = pimage;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	public int getProductId() {
 		return productId;
@@ -61,18 +64,11 @@ public class Product
 	public void setCatId(int catId) {
 		this.catId = catId;
 	}
-	public int getSupplierId() {
-		return supplierId;
+	public int getSupId() {
+		return supId;
 	}
-	public void setSupplierId(int supplierId) {
-		this.supplierId = supplierId;
+	public void setSupId(int supId) {
+		this.supId = supId;
 	}
 	
-	@Override
-   	public String toString() {
-   		return "Product [productId=" + productId + ", productName=" + productName + ", productDesc=" + productDesc
-   				+ ", stock=" + stock + ", price=" + price + ", catId=" + catId + ", supplierId=" + supplierId
-   				+ ", pimage=" + pimage + "]";
-	
-}
 }

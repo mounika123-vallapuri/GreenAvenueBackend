@@ -20,13 +20,10 @@ public class ProductDAOImpl implements ProductDAO
 {
 	@Autowired
     SessionFactory sessionFactory;
-    
-	
-    public ProductDAOImpl(SessionFactory sessionFactory) {
-this.sessionFactory=sessionFactory;
-	}
+   
 
 	@Transactional
+
 	public boolean addProduct(Product product) {
 		
     	try
@@ -40,22 +37,21 @@ this.sessionFactory=sessionFactory;
         }
 		
 	}
-
+	@Transactional
+	
 	public boolean deleteProduct(Product product) {
 		try
 		{
-		Session session=sessionFactory.getCurrentSession();
-		session.delete(product);
+		sessionFactory.getCurrentSession().save(product);
 		return true;
 		}
 		catch(Exception e)
 		{
-		System.out.println("Exception Arised:"+e);	
 		return false;
 		}
 
 	}
-	
+
 	
 	public List<Product> retrieveProducts() {
 
@@ -68,6 +64,7 @@ this.sessionFactory=sessionFactory;
 		return listProduct;
 	}
 
+	@Transactional
 	
 	public boolean updateProduct(Product product) {
 		try
@@ -81,7 +78,7 @@ this.sessionFactory=sessionFactory;
 		return false;
 		}
 	}
-
+	
 	public Product getProduct(int productId) {
 		Session session=sessionFactory.openSession();
 		Product product=(Product)session.get(Product.class,productId);
@@ -89,6 +86,12 @@ this.sessionFactory=sessionFactory;
 		return product;
 	
 	
+	}
+
+	public Product getItem(int productId) {
+		
+		Product product=sessionFactory.getCurrentSession().get(Product.class, productId);
+		return product;
 	}
 	
 }

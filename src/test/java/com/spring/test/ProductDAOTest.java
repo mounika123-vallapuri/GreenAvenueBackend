@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.dao.ProductDAO;
 import com.spring.model.Product;
 
-
+@Ignore
 public class ProductDAOTest 
 {
 
@@ -29,7 +29,7 @@ public class ProductDAOTest
 		
 		productDAO=(ProductDAO)configApplnContext.getBean("productDAO");
 	}
-@Ignore
+
 	@Transactional
 	@Test
 	public void addProductTest()
@@ -41,7 +41,7 @@ public class ProductDAOTest
 		product.setStock(10);
 		product.setPrice(299);
 		product.setCatId(1001);
-		product.setSupplierId(1001);
+		product.setSupId(1001);
 		
 		assertTrue("Problem in Insertion",productDAO.addProduct(product));
 		

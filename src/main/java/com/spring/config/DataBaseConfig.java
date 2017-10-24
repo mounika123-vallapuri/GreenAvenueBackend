@@ -26,7 +26,7 @@ public class DataBaseConfig
 		public DataSource getDataSource() {
 			DriverManagerDataSource dataSource = new DriverManagerDataSource();
 			dataSource.setDriverClassName("org.h2.Driver");
-			dataSource.setUrl("jdbc:h2:tcp://localhost/~/DT133");
+			dataSource.setUrl("jdbc:h2:tcp://localhost/~/test");
 			dataSource.setUsername("sa");
 			dataSource.setPassword("a");
 			System.out.println("Datasource");
@@ -69,12 +69,7 @@ public class DataBaseConfig
 	public UserDAO getUserDAO(SessionFactory sessionFactory) {
 	    return new UserDAOImpl(sessionFactory);
 	}
-	
-	@Autowired
-	@Bean(name = "productDAO")
-	public ProductDAO getProductDao(SessionFactory sessionFactory) {
-	    return new ProductDAOImpl(sessionFactory);
-	}
+
 	
 	
 	@Autowired
