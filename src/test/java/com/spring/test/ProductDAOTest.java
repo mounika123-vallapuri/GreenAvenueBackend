@@ -41,7 +41,7 @@ public class ProductDAOTest
 		product.setStock(10);
 		product.setPrice(299);
 		product.setCatId(1001);
-		product.setSupId(1001);
+		product.setSupplierId(1001);
 		
 		assertTrue("Problem in Insertion",productDAO.addProduct(product));
 		

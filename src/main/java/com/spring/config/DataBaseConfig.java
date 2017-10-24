@@ -88,7 +88,11 @@ public class DataBaseConfig
 		
 	}
 	
-
+	/*@Autowired
+	@Bean(name="productDAO")
+	public ProductDAO getProduct(SessionFactory sessionFactory){
+		return new ProductDAOImpl(sessionFactory);
+	}*/
 	
 	
 
