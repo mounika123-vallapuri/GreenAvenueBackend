@@ -1,82 +1,81 @@
 package com.spring.model;
 
+import java.io.Serializable;
+import java.util.Arrays;
+
 import javax.persistence.*;
 
 @Entity
 @Table
-public class Product
+public class Product implements Serializable
 {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 @Id
-int productId;
+@GeneratedValue
+private int productId;
+
 @Lob
 public byte[] image;
-String productName,productDesc;
-int stock,price,catId,supplierId;
-public byte[] getImage()
-{
-	return image;
-}
-public void setImage(byte[] image)
-{
-	this.image = image;
-}
+private String productName;
+private String productDesc;
+private int stock;
+private int price;
+private int catId;
+private int supplierId;
 
-
-public int getProductId()
-{
+public int getProductId() {
 	return productId;
 }
-public void setProductId(int productId)
-{
+public void setProductId(int productId) {
 	this.productId = productId;
 }
-public String getProductName() 
-{
+public byte[] getImage() {
+	return image;
+}
+public void setImage(byte[] image) {
+	this.image = image;
+}
+public String getProductName() {
 	return productName;
 }
-public void setProductName(String productName)
-{
+public void setProductName(String productName) {
 	this.productName = productName;
 }
-public String getProductDesc() 
-{
+public String getProductDesc() {
 	return productDesc;
 }
-public void setProductDesc(String productDesc)
-{
+public void setProductDesc(String productDesc) {
 	this.productDesc = productDesc;
 }
 public int getStock() {
 	return stock;
 }
-public void setStock(int stock)
-{
+public void setStock(int stock) {
 	this.stock = stock;
 }
-public int getPrice()
-{
+public int getPrice() {
 	return price;
 }
-public void setPrice(int price)
-{
+public void setPrice(int price) {
 	this.price = price;
 }
-public int getCatId() 
-{
+public int getCatId() {
 	return catId;
 }
-public void setCatId(int catId)
-{
+public void setCatId(int catId) {
 	this.catId = catId;
 }
-public int getSupplierId()
-{
+public int getSupplierId() {
 	return supplierId;
 }
-public void setSupplierId(int supplierId)
-{
+public void setSupplierId(int supplierId) {
 	this.supplierId = supplierId;
 }
 
+
 }
+

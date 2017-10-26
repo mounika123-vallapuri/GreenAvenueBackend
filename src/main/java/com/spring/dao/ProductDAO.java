@@ -7,8 +7,8 @@ public interface ProductDAO
 {
 	public boolean addProduct(Product product);
 	public List<Product> retrieveProduct();
-	public boolean deleteProduct(Product product);
+	public boolean deleteProduct(int productId);
 	public Product getProduct(int productId);
 	public boolean updateProduct(Product product);
-	public Product getItem(int id);
+	public Product getItem(int productId);
 }

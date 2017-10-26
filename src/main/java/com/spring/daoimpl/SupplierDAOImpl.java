@@ -6,15 +6,13 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dao.SupplierDAO;
-import com.spring.model.Category;
 import com.spring.model.Supplier;
 
 @SuppressWarnings("deprecation")
-@Repository("supplierDAO")
+
 public class SupplierDAOImpl implements SupplierDAO
 {
 	@Autowired

@@ -1,17 +1,27 @@
 package com.spring.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
-public class Supplier 
+public class Supplier implements Serializable
 {
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+
 	@Id
 	@GeneratedValue
-	
 	int supId;
 	
+	
+
 	String supName,supDesc, supAddress;
 
 	public int getSupId() {

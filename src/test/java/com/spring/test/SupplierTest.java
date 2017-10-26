@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.spring.config.DataBaseConfig;
 import com.spring.dao.SupplierDAO;
@@ -22,7 +22,7 @@ public class SupplierTest
 	public static void initialize()
 	{
 		@SuppressWarnings("resource")
-		AnnotationConfigWebApplicationContext configApplnContext=new AnnotationConfigWebApplicationContext();
+		AnnotationConfigApplicationContext configApplnContext=new AnnotationConfigApplicationContext();
 		configApplnContext.scan("com.spring");
 		configApplnContext.register(DataBaseConfig.class);
 		configApplnContext.refresh();
@@ -92,10 +92,3 @@ public class SupplierTest
 	}
 
 }
-
-
-
-
-
-
-
