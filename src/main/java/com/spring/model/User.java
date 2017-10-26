@@ -16,6 +16,7 @@ public static final long serialVersionUID=1L;
 
 @Id
 @GeneratedValue
+private int id;
 private String username;
 private String email;
 private String password;
@@ -24,6 +25,12 @@ private String address;
 private String role;
 private boolean enabled;
 
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
 
 
 public String getUsername() {
