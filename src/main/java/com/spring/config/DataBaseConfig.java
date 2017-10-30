@@ -8,10 +8,12 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.*;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.spring.dao.CartDAO;
 import com.spring.dao.CategoryDAO;
 import com.spring.dao.ProductDAO;
 import com.spring.dao.SupplierDAO;
 import com.spring.dao.UserDAO;
+import com.spring.daoimpl.CartDAOImpl;
 import com.spring.daoimpl.CategoryDAOImpl;
 import com.spring.daoimpl.ProductDAOImpl;
 import com.spring.daoimpl.SupplierDAOImpl;
@@ -94,6 +96,13 @@ public class DataBaseConfig
 		return new ProductDAOImpl(sessionFactory);
 	}
 	
+	@Autowired
+	@Bean(name = "cartDAO")
+	public CartDAO getCartDAO(SessionFactory sessionFactory)
+	{
+
+		return new CartDAOImpl(sessionFactory);
+	}
 	
 
 }
