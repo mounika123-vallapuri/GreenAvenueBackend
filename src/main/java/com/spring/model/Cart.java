@@ -21,7 +21,7 @@ public class Cart implements Serializable
 	int cartId;
 	private int productId;
 	private int userId;
-	private int subTotal;
+	private double subTotal;
 	private int price;
 	private int productQuantity;
 	
@@ -47,10 +47,13 @@ public class Cart implements Serializable
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public int getSubTotal() {
+	
+	
+	
+	public double getSubTotal() {
 		return subTotal;
 	}
-	public void setSubTotal(int subTotal) {
+	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
 	}
 	public int getPrice() {

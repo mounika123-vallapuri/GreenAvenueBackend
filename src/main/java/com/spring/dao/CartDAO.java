@@ -8,7 +8,7 @@ import com.spring.model.Cart;
 public interface CartDAO
 {
 	
-	public boolean saveProductToCart(Cart cart);
+public boolean saveProductToCart(Cart cart);
 	
 	public Cart getitem(int prodId,int userId);
 	
@@ -21,7 +21,8 @@ public interface CartDAO
 	
 	public Cart editCartById(int cart_id);
 	public Cart getCartById(int cart_id);
+
 	
 	public List<Cart>listCartbyUserId(int userId);
-
+	
 }
