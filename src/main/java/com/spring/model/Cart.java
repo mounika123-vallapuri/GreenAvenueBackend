@@ -1,6 +1,7 @@
 package com.spring.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 
@@ -24,6 +25,14 @@ public class Cart implements Serializable
 	private double subTotal;
 	private int price;
 	private int productQuantity;
+	
+	private Timestamp createdTimestamp;
+	
+	private String createdBy;
+	
+	private Timestamp updatedTimestamp;
+	
+	private String updatedBy;
 	
 	
 	public int getCartId() {
@@ -76,7 +85,31 @@ public class Cart implements Serializable
 	}
 	String productName;
 
-	
-	
-	
+
+	public Timestamp getCreatedTimestamp() {
+		return createdTimestamp;
+	}
+	public void setCreatedTimestamp(Timestamp createdTimestamp) {
+		this.createdTimestamp = createdTimestamp;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public Timestamp getUpdatedTimestamp() {
+		return updatedTimestamp;
+	}
+	public void setUpdatedTimestamp(Timestamp updatedTimestamp) {
+		this.updatedTimestamp = updatedTimestamp;
+	}
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+		
 }

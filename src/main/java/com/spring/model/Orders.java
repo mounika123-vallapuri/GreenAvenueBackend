@@ -25,8 +25,7 @@ import org.springframework.stereotype.Component;
 public class Orders {
 
 	@Id
-	@GeneratedValue
-	private int orderId;
+	private String orderId;
 	
 	private int userId;
 	
@@ -37,6 +36,12 @@ public class Orders {
 	private String orderStatus;
 	
 	private int paymentId;
+	
+	private int productId;
+	
+	private int price;
+	
+	private int productQuantity;
 		
 	private Timestamp createdTimestamp;
 	
@@ -46,14 +51,12 @@ public class Orders {
 	
 	private String updatedBy;
 	
-	private int cartId;
 	
-	
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 
@@ -129,12 +132,28 @@ public class Orders {
 		this.updatedBy = updatedBy;
 	}
 
-	public int getCartId() {
-		return cartId;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getProductQuantity() {
+		return productQuantity;
+	}
+
+	public void setProductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
 	}
 	
 	
