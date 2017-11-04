@@ -8,11 +8,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.*;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.spring.dao.AddressDAO;
 import com.spring.dao.CartDAO;
 import com.spring.dao.CategoryDAO;
 import com.spring.dao.ProductDAO;
 import com.spring.dao.SupplierDAO;
 import com.spring.dao.UserDAO;
+import com.spring.daoimpl.AddressDAOImpl;
 import com.spring.daoimpl.CartDAOImpl;
 import com.spring.daoimpl.CategoryDAOImpl;
 import com.spring.daoimpl.ProductDAOImpl;
@@ -28,7 +30,7 @@ public class DataBaseConfig
 		public DataSource getDataSource() {
 			DriverManagerDataSource dataSource = new DriverManagerDataSource();
 			dataSource.setDriverClassName("org.h2.Driver");
-			dataSource.setUrl("jdbc:h2:tcp://localhost/~/test");
+			dataSource.setUrl("jdbc:h2:tcp://localhost/~/mounika");
 			dataSource.setUsername("sa");
 			dataSource.setPassword("a");
 			System.out.println("Datasource");
@@ -43,7 +45,7 @@ public class DataBaseConfig
 			//properties.put("hibernate.hbm2ddl.auto", "create");
 			properties.put("hibernate.hbm2ddl.auto", "update");
 			System.out.println("Hibernate Properties");
-			return properties;
+			return properties;	
 
 		}
 
@@ -102,6 +104,14 @@ public class DataBaseConfig
 	{
 
 		return new CartDAOImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean(name = "addressDAO")
+	public AddressDAO getAddressDAO(SessionFactory sessionFactory)
+	{
+
+		return new AddressDAOImpl(sessionFactory);
 	}
 	
 

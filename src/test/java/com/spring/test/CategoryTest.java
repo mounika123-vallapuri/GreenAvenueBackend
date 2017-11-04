@@ -1,4 +1,4 @@
-package com.spring.test;
+/*package com.spring.test;
 
 import static org.junit.Assert.*;
 
@@ -13,8 +13,6 @@ import com.spring.dao.CategoryDAO;
 import com.spring.model.Category;
 
 
-
-@Ignore
 public class CategoryTest 
 {
 	static CategoryDAO categoryDAO;
@@ -32,7 +30,7 @@ public class CategoryTest
 		categoryDAO=(CategoryDAO)configApplnContext.getBean("categoryDAO");
 	}
 	
-   @Ignore
+   
 	@Test
 	public void addCategoryTest()
 	{
@@ -97,4 +95,4 @@ public class CategoryTest
 		System.out.println("Category Description  = "+category.getCatDesc());
 	}
 
-}
+}*/

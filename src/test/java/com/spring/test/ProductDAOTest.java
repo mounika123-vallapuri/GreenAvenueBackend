@@ -1,4 +1,4 @@
-package com.spring.test;
+/*package com.spring.test;
 
 import static org.junit.Assert.*;
 
@@ -49,3 +49,4 @@ public class ProductDAOTest
 	
 	
 }
+*/
