@@ -26,7 +26,8 @@ public class UserDAOImpl implements UserDAO {
 		this.sessionFactory=sessionFactory;
 			
 		}
-
+		
+		@Transactional
 		public boolean saveUser(User user)
 		{
 			
@@ -44,10 +45,19 @@ public class UserDAOImpl implements UserDAO {
 			// TODO Auto-generated method stub
 			return null;
 		}
-
+@Transactional
 		public User getUserById(int user_id) {
-			// TODO Auto-generated method stub
-			return null;
+	Criteria c = sessionFactory.getCurrentSession().createCriteria(User.class);
+	c.add(Restrictions.eq("userid", user_id));
+
+	@SuppressWarnings("unchecked")
+	List<User> listUser = (List<User>) c.list();
+
+	if (listUser != null && !listUser.isEmpty()) {
+		return listUser.get(0);
+	} else {
+		return null;
+	}
 		}
 
 		public void removeUserById(int user_id) {

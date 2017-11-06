@@ -113,6 +113,11 @@ public class ProductDAOImpl implements ProductDAO
 		
 		return true;
 	}
+@Transactional
+	public List<Product> getAllProducts() {
+		List<Product> product = sessionFactory.getCurrentSession().createQuery("from Product",Product.class).list();
+		return product;
+	}
 
 }
 

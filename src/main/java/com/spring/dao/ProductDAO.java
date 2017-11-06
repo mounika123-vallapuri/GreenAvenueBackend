@@ -11,4 +11,5 @@ public interface ProductDAO
 	public Product getProduct(int productId);
 	public boolean updateProduct(Product product);
 	public Product getItem(int productId);
+	public List<Product> getAllProducts();
 }

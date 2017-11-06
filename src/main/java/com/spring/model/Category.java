@@ -3,6 +3,8 @@ package com.spring.model;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Category implements Serializable
@@ -16,8 +18,14 @@ public class Category implements Serializable
 	@Id
 	@GeneratedValue
 	int catId;
-	
-	String catName,catDesc;
+
+	@NotNull
+	@Size(min=5, max=15)
+	private String catName;
+
+	@NotNull
+	@Size(min=10, max=30)
+	private String catDesc;
 
 	public int getCatId() {
 		return catId;

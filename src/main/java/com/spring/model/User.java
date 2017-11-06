@@ -5,7 +5,11 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -17,11 +21,27 @@ public static final long serialVersionUID=1L;
 @Id
 @GeneratedValue
 private int id;
+
+@NotNull(message="please enter the username")
+@Size(min=5,max=10)
 private String username;
+
+@NotNull(message="please enter the email")
+@Email
 private String email;
+
+@NotNull(message="please enter the password")
+@Size(min = 6, max = 15)
 private String password;
+
+@NotNull(message="please enter the contact")
+@Pattern(regexp="(^$|[0-9]{10})")
 private String contact;
+
+@NotNull(message="please enter the address")
+@Size(min=10, max=30)
 private String address;
+
 private String role;
 private boolean enabled;
 
@@ -31,8 +51,6 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-
-
 public String getUsername() {
 	return username;
 }
